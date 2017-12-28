@@ -14,6 +14,8 @@ gem 'delayed_job_active_record'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'daemons'
+gem 'capistrano3-delayed-job'
 
 
 group :development, :test do
