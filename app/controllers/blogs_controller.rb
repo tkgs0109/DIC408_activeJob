@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         # TitlesChangeJob.perform_later(@blog.id)
+        TitlesChangeJob.set(wait_until: Date.tomorrow.noon).perform_later(@blog.id)
         NoticeMailer.sendmail_blog(@blog).deliver_later
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
         format.json { render :show, status: :created, location: @blog }
